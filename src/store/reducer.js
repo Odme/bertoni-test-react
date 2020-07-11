@@ -1,4 +1,9 @@
-import { SAVE_TASKS, DELETE_TASK } from './actions';
+import {
+  SAVE_TASKS,
+  DELETE_TASK,
+  SET_EDIT_TASK,
+  SAVE_TASK,
+} from './actions';
 
 const initialState = () => ({
   tasks: [],
@@ -18,6 +23,25 @@ const reducer = (state = initialState(), action) => {
         ...state,
         tasks: state.tasks.filter((task) => task._id !== payload.id),
       }
+    case SET_EDIT_TASK:
+      return {
+        ...state,
+        editingTask: payload.id,
+      }
+    case SAVE_TASK: {
+      const { task } = payload;
+      let tasks = [...state.tasks];
+      const foundIndex = tasks.findIndex((item) => item._id === task.id);
+      if (foundIndex !== -1) {
+        tasks[foundIndex] = { ...tasks[foundIndex], ...task };
+      } else {
+        tasks = [...tasks, task];
+      }
+      return {
+        ...state,
+        tasks,
+      }
+    }
     default:
       break;
   }
