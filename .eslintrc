@@ -1,0 +1,23 @@
+{
+  "extends": ["react-app", "airbnb", "airbnb/hooks"],
+  "rules": {
+    "react/no-unused-prop-types": "warn",
+    "no-unused-vars": "warn",
+    "react/jsx-filename-extension": [1, {
+      "extensions":
+        [
+          ".spec.js",
+          ".test.js",
+          ".jsx"
+        ]
+    }],
+    "import/no-extraneous-dependencies": ["error", {
+      "devDependencies":
+        [
+          "src/setupTests.js",
+          "**/*.spec.js",
+          "**/*.test.js"
+        ]
+    }]
+  }
+}
