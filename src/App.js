@@ -1,10 +1,11 @@
 import { connect } from 'react-redux';
 
 import {
+  addEditTask,
   deleteTask,
-  saveTask,
   saveTasks,
   setEditTask,
+  getTasks,
 } from './store/actions';
 import AppView from './AppView';
 
@@ -14,8 +15,9 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
+  addEditTask: (task) => dispatch(addEditTask(task)),
   deleteTask: (id) => dispatch(deleteTask({ id })),
-  saveTask: (task) => dispatch(saveTask({ task })),
+  getTasks: () => dispatch(getTasks()),
   saveTasks: (tasks) => dispatch(saveTasks({ tasks })),
   setEditTask: (id) => dispatch(setEditTask({ id })),
 });
