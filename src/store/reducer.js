@@ -41,6 +41,7 @@ const reducer = (state = initialState(), action) => {
       return {
         ...state,
         tasks,
+        editingTask: null,
       };
     }
     default:
